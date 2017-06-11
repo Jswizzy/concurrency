@@ -1,0 +1,28 @@
+Concurrency: the art of doing several things "at the same time".
+
+A thread is a set of instructions
+
+an application can be composed of several threads
+
+can be executed "at the same time".
+
+scheduler is in charge of coordinating threads
+
+cpu resources shared equally, thread waiting from something, thread waiting on another thread or resource
+
+race condition
+  accessing data concurrently
+  two threads read and write to the same variable at the same time
+
+Singleton prevents multiple instances of the same object
+
+synchronization locks a resource and associates that key a thread so only one thread can access it
+
+key is called a monitor
+
+locks are reentrant
+
+reentrant: when a thread holds a lock, it can enter a block synchronized on the lock it is holding
+
+deadlocks: is a situation where a thread T1 holds a key needed by a thread t2, and t2 holds a key needed by t1
+

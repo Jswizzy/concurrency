@@ -1,0 +1,48 @@
+visibility
+  return variable of the last write
+
+happens before link:
+  not a keyword
+  a happens before link exists between all
+  synchronized or volatile write operations and all
+  synchronized or volatile read operations that follow
+
+volatile:
+  happens before link
+
+false sharing:
+
+memory access, cpu reads from cache and not main memory
+
+access to caches is much faster than access to the main memory
+
+cpus have an l1 and l2 cache each and share a l3 cache
+
+size / speed trade off
+
+32kb, 256kb,
+
+variable can be in cache and main memory, needs a trick to find var in cache instead of main memory
+
+a variable is said visible if the writes made on it are visible, all synchronized writes are visible
+
+java memory model
+  read and writes can happen at the same time
+  variables can be in more than one place
+
+variables used by more than one thread have a race condition if not synchronized or volatile
+
+false sharing
+  happens because of the way the cache works
+  it is a side-effect and can have a tremendous effect of performance
+
+cache is organized in lines of data
+each line can hold 8 longs (64 bytes)
+when a visible variable is is modified in L1 cache, all the line is marked "dirty" for the other caches
+A read on a dirty line triggers a refresh on this line
+
+false sharing is completely invisible
+hard to predict, hits your performance
+there are workarounds
+
+

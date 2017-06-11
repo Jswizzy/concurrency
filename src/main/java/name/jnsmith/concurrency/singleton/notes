@@ -1,0 +1,27 @@
+singleton case study, thread safe
+
+synchronization: works but poor performances
+
+double-check locking: why is it buggy? Hard to detect
+
+Well know pattern from the Gang of Four
+
+tricky in concurrent environment
+
+join releases key,
+
+using a private object key fixes problems
+
+how to write concurrent code
+
+1. check for race conditions
+  occur on fields not variables or parameters
+  2 threads are reading / writing a given field
+
+2. check for the happens before link
+  read / write volatile or synchronized
+  otherwise bug
+
+3. synchronized or volatile
+  synchronized =  atomicity
+  volatile = visibility

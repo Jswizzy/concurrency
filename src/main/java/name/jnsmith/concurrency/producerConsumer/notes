@@ -1,0 +1,68 @@
+producer consumer pattern.
+
+wait and notify
+
+@FunctionalInterface
+
+public interface Runnable {
+  void run();
+}
+
+Runnable task = () -> System.out.println("Hello World!");
+
+
+1) create an instance of Runnable
+2) create a thread and pass Runnable to it
+3) launch by calling start on thread
+*do not call run method
+
+Thread.currentThread() will get current thread that is running
+
+how to stop a thread?
+  stop(); do not use it at all
+
+  interrupt() method, will not stop a thread but will tell thread it is time to stop
+
+
+Thread t1 = ...;
+t1.interrupt();
+
+isInterrupted() will return true
+
+wait();
+notify();
+join();
+
+What is producer / consumer
+  buffer produces a value
+  consumer consumes values from buffer
+  buffer can be full or empty
+  may led to race condition if not careful use synchronization
+  need to use wait() and key needs to be available
+
+wait / notify
+  throws if key is not held by executing thread
+  cannot be invoked out of a synchronized block
+
+calling wait() releases the key
+  wait state on thread, only way to release is to call notify
+  puts it in the runnable state
+  released thread can be randomly chosen
+  there is also a notifyAll() method
+
+Threads
+  can be running or not
+  has a state
+  threads in wait list are ignored by scheduler
+
+Thread state
+  new - just created and not run
+  runnable - start method called, scheduler free to use thread
+  terminated - done with task
+
+  blocked - key not available, can run again when key is available
+  waiting - thread in wait list, not available to scheduler, responses to notify
+  timed_waiting - parked using sleep(timeout) or wait(timeout) call, notified at the end
+
+Thread.State { NEW, RUNNABLE, TERMINATED, BLOCKED, WAITING, TIME_WAITING }
+
